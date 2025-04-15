@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Net.Http;
 #pragma warning disable CS1591
 namespace Supabase.Postgrest
 {
@@ -18,5 +19,7 @@ namespace Supabase.Postgrest
 		public Dictionary<string, string> Headers { get; set; } = new Dictionary<string, string>();
 
 		public Dictionary<string, string> QueryParams { get; set; } = new Dictionary<string, string>();
-	}
+
+		public HttpClient RequestHttpClient { get; set; } = new HttpClient();
+    }
 }

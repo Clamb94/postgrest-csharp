@@ -21,9 +21,7 @@ namespace Supabase.Postgrest
 
 	internal static class Helpers
 	{
-		private static readonly HttpClient Client = new HttpClient();
-
-		private static readonly Guid AppSession = Guid.NewGuid();
+        private static readonly Guid AppSession = Guid.NewGuid();
 
 		/// <summary>
 		/// Helper to make a request using the defined parameters to an API Endpoint and coerce into a model. 
@@ -94,7 +92,7 @@ namespace Supabase.Postgrest
 				}
 			}
 
-			using var response = await Client.SendAsync(requestMessage, cancellationToken).ConfigureAwait(false);
+			using var response = await clientOptions.RequestHttpClient.SendAsync(requestMessage, cancellationToken).ConfigureAwait(false);
 			var content = await response.Content.ReadAsStringAsync();
 
 			if (response.IsSuccessStatusCode)
